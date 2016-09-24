@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+
+    "name": "hackdartmouth",
+    "description": "This extension will monitor the safety of a website",
+    "version": "0.0.1",
+
+    "browser_action": {
+        "default_icon": "info.png",
+        "default_title": "Surf Safely",
+        "default_popup": "main.html"
+    },
+
+    "permissions": [
+    "tabs",
+    "activeTab",  
+    "https://ajax.googleapis.com/"
+    ]
+}
