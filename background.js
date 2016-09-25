@@ -4,8 +4,7 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
    	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
     	var url = tabs[0].url;
     	console.log(url);
-    	chrome.runtime.sendMessage({ url: url });
-    	chrome.tabs.sendMessage(tabs[0].id, {action: "google"}, function(response) {
+    	chrome.tabs.sendMessage(tabs[0].id, {action: "google", url: url}, function(response) {
     	});
     });
   }
