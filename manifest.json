@@ -13,7 +13,12 @@
 
     "permissions": [
     "tabs",
-    "activeTab",  
+    "activeTab",
+    "notifications",  
     "https://ajax.googleapis.com/"
+    ],
+
+    "web_accessible_resources": [
+    "icons/Main.png"
     ]
 }
