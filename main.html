@@ -2,12 +2,107 @@
 <html>
 	<head>
 		<script src="main.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 		<style>
+			html, body {
+				font-size: 16px;
+				font-family: "Open Sans", sans-serif;
+				margin: 0px;
+				color: white;
+			}
 
+			body {
+				padding: 10px;
+				background-color: black;
+			}
+
+			h3 {
+				text-align: center;
+				margin: 0;
+				min-width: 7em;
+			}
+
+			h3 img {
+				max-height: 1em;
+				display: inline-block;
+			}
+
+			#mainScore {
+				border-radius: 4px;
+				display: table;
+				margin: 5px auto;
+				min-width: 23px;
+				padding: 3px 5px;
+
+				color: black;
+				background-color: white;
+				text-align: center;
+				font-size: 1.2em;
+				font-weight: bold;
+			}
+
+			.stat {
+				white-space: nowrap;
+				text-align: right;
+			}
+
+			.stat span {
+				display: inline-block;
+			}
+
+			.label {
+				margin-right: 5px;
+			}
+
+			.bar {
+				min-width: 3em;
+				min-height: 1em;
+				vertical-align: middle;
+
+				border: 2px solid white;
+				border-radius: 3px;
+
+				position: relative;
+			}
+
+			.bar span {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				background-color: white;
+
+				min-height: 1em;
+				min-width: 2em;
+			}
+
+			.score {
+				min-width: 1.5em;
+				text-align: center;
+			}
 		</style>
 	</head>
 	<body>
-		<h2>SurfShield <img src="icons/Main.png" /></h2>
-		<div id="message"></div>
+		<h3>SurfShield <img src="icons/Main.png" /></h3>
+		<div id="mainScore">N/A</div>
+		<div class="stat" id="anger">
+			<span class="label">Anger</span>
+			<span class="bar"><span></span></span>
+			<span class="score">3.2</span>
+		</div>
+		<div class="stat" id="cyberbullying">
+			<span class="label">Cyberbullying</span>
+			<span class="bar"><span></span></span>
+			<span class="score">1.6</span>
+		</div>
+		<div class="stat" id="profanity">
+			<span class="label">Profanity</span>
+			<span class="bar"><span></span></span>
+			<span class="score">4</span>
+		</div>
+		<div class="stat" id="audience">
+			<span class="label">Audience</span>
+			<span class="bar"><span></span></span>
+			<span class="score">3</span>
+		</div>
 	</body>
 </html>
