@@ -12,8 +12,12 @@
     },
 
     "permissions": [
-    "tabs",
-    "activeTab",  
-    "https://ajax.googleapis.com/"
-    ]
+        "tabs",
+        "activeTab",  
+        "https://ajax.googleapis.com/"
+    ],
+
+    "icons": {
+        "128": "icons/Main.png"
+    }
 }
