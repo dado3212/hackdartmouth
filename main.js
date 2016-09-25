@@ -1,6 +1,6 @@
-chrome.runtime.onMessage.addListener(function(request, sender) {
-  if (request.action == "getSource") {
-    var str = request.source;
+chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
+  if (msg.action == "getSource") {
+    var str = msg.source;
     str = str.replace(/<style.*?>[\s\S]*?<\/style>/gm, ' ');
     str = str.replace(/<script.*?>[\s\S]*?<\/script>/gm, ' ');
     str = str.replace(/<(?:.|\n)*?>/gm, ' ');
@@ -72,15 +72,16 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     }
     var d = JSON.stringify({ url: 'test', text: str });
     xhr.send(d);
-  } else if (request.action == "google") {
+  } else if (msg.action == "google") {
+    alert('Yup!');
     chrome.notifications.create('reminder', {
-        type: 'basic',
-        iconUrl: 'icons/Main.png',
-        title: 'Here is the score',
-        message: 'Blank'
-     }, function(notificationId) {
-      timer = setTimeout(function(){chrome.notifications.clear(notificationId);}, 2500);
-     });
+      type: 'basic',
+      iconUrl: 'icons/Main.png',
+      title: 'Here is the score',
+      message: 'Site is Safe'
+    }, function(notificationId) {
+      timer = setTimeout(function(){chrome.notifications.clear(notificationId);}, 1000);
+    });
   }
 });
 

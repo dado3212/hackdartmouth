@@ -17,22 +17,24 @@
 
     "content_scripts": [
     {
-      "matches": ["http://*/*"],
-      "js": ["main.js"]
+        "matches": ["<all_urls>"],
+        "js": ["main.js"],
+        "run_at": "document_idle",
+        "all_frames": false
     }],
 
     "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
 
     "permissions": [
-    "tabs",
-    "activeTab",
-    "notifications",
-    "background",  
-    "https://ajax.googleapis.com/"
+        "tabs",
+        "activeTab",
+        "notifications",
+        "background",  
+        "https://ajax.googleapis.com/"
     ],
 
     "web_accessible_resources": [
-    "icons/Main.png"
+        "icons/Main.png"
     ],
 
     "icons": {
