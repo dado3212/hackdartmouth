@@ -36,24 +36,15 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     str = str.replace(/<(?:.|\n)*?>/gm, ' ');
     str = str.replace(/\n/gm, ' ');
     
-    // message.innerText = str;
-
     xhr = new XMLHttpRequest();
     // xhr.open("POST", "http://surfshield-env.us-east-1.elasticbeanstalk.com/api/v0.1/rating", true);
     xhr.open("POST", "http://alexbeals.com/test.php", true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () { 
       if (xhr.readyState == 4 && xhr.status == 200) {
-          currentData = JSON.parse(xhr.responseText);
+        currentData = JSON.parse(xhr.responseText);
 
-          // chrome.notifications.create('reminder', {
-          //   type: 'basic',
-          //   iconUrl: 'icons/Main.png',
-          //   title: 'Here is the score',
-          //   message: 'Site is Safe'
-          // }, function(notificationId) {
-          //   timer = setTimeout(function(){chrome.notifications.clear(notificationId);}, 1000);
-          // });
+        chrome.runtime.sendMessage({action: "updateIcon", data: currentData});
       }
     }
     var d = JSON.stringify({ url: msg.url, text: str });
@@ -62,17 +53,3 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     sendResponse(currentData);
   }
 });
-
-// function onWindowLoad() {
-//   var message = document.querySelector('#message');
-//   // chrome.tabs.executeScript(null, {
-//   //   file: "getPagesSource.js"
-//   // }, function() {
-//   //   // If you try and inject into an extensions page or the webstore/NTP you'll get an error
-//   //   if (chrome.runtime.lastError) {
-//   //     message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
-//   //   }
-//   // });
-// }
-
-// window.onload = onWindowLoad;
