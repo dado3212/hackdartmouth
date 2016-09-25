@@ -66,6 +66,15 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
      }, function(notificationId) {
       timer = setTimeout(function(){chrome.notifications.clear(notificationId);}, 2500);
      });
+  } else if (request.action == "google") {
+    chrome.notifications.create('reminder', {
+        type: 'basic',
+        iconUrl: 'icons/Main.png',
+        title: 'Here is the score',
+        message: 'Blank'
+     }, function(notificationId) {
+      timer = setTimeout(function(){chrome.notifications.clear(notificationId);}, 2500);
+     });
   }
 });
 

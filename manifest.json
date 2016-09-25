@@ -5,16 +5,27 @@
     "description": "This extension will monitor the safety of a website",
     "version": "0.0.1",
 
+    "background": {
+        "scripts": ["background.js"]
+    },
+
     "browser_action": {
         "default_icon": "icons/main_38.png",
         "default_title": "SurfShield",
         "default_popup": "main.html"
     },
 
+    "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["main.js"]
+    }],
+
     "permissions": [
     "tabs",
     "activeTab",
-    "notifications",  
+    "notifications",
+    "background",  
     "https://ajax.googleapis.com/"
     ],
 
