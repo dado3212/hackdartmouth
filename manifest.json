@@ -20,7 +20,7 @@
 
     "web_accessible_resources": [
     "icons/Main.png"
-    ]
+    ],
 
     "icons": {
         "128": "icons/Main.png"

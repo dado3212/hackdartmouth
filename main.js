@@ -14,6 +14,13 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
         '38': 'icons/green_38.png'
       },
     });
+
+    chrome.notifications.create('reminder', {
+        type: 'basic',
+        iconUrl: 'icons/Main.png',
+        title: 'Here is the score',
+        message: 'Site is Safe'
+     }, function(notificationId) {});
   }
 });
 
