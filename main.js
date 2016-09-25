@@ -8,15 +8,17 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     
     // message.innerText = str;
 
-    var colors = ['#AC1212', '#F37310', '#EBC621', '#9EC430', '#4E9A26'];
-    var icons = ['red', 'orange', 'yellow', 'yellowgreen', 'green'];
+    // var colors = ['#AC1212', '#F37310', '#EBC621', '#9EC430', '#4E9A26'];
+    var colors = ['#4E9A26', '#9EC430', '#EBC621', '#F37310', '#AC1212'];
+    // var icons = ['red', 'orange', 'yellow', 'yellowgreen', 'green'];
+    var icons = ['green', 'yellowgreen', 'yellow', 'orange', 'red'];
 
     var data = {
       'audience': 5,
       'anger': 4.1,
       'cyberbullying': 3,
       'profanity': 2,
-      'overall': 3.4
+      'overall': 1
     };
 
     var body = document.querySelector('body');
@@ -55,7 +57,9 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
         iconUrl: 'icons/Main.png',
         title: 'Here is the score',
         message: 'Site is Safe'
-     }, function(notificationId) {});
+     }, function(notificationId) {
+      timer = setTimeout(function(){chrome.notifications.clear(notificationId);}, 2500);
+     });
   }
 });
 
