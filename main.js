@@ -7,6 +7,9 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     str = str.replace(/\n/gm, ' ')
     
     message.innerText = str;
+
+    chrome.browserAction.setIcon({path: 'icons/Green.png'})
+
   }
 });
 

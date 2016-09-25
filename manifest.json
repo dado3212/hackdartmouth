@@ -6,7 +6,7 @@
     "version": "0.0.1",
 
     "browser_action": {
-        "default_icon": "info.png",
+        "default_icon": "icons/Main.png",
         "default_title": "SurfShield",
         "default_popup": "main.html"
     },
