@@ -8,8 +8,12 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     
     message.innerText = str;
 
-    chrome.browserAction.setIcon({path: 'icons/Green.png'})
-
+    chrome.browserAction.setIcon({
+      path: {
+        '19': 'icons/green_19.png',
+        '38': 'icons/green_38.png'
+      },
+    });
   }
 });
 
