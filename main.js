@@ -4,10 +4,16 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     str = str.replace(/<style.*?>[\s\S]*?<\/style>/gm, ' ');
     str = str.replace(/<script.*?>[\s\S]*?<\/script>/gm, ' ');
     str = str.replace(/<(?:.|\n)*?>/gm, ' ');
-    str = str.replace(/\n/gm, ' ')
+    str = str.replace(/\n/gm, ' ');
     
     // message.innerText = str;
 
+    var urlString = window.location.href;
+    $.post("/api/v0.1/rating", {url:urlString, text:str },
+    function(response,status){ 
+    alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status);
+    });
+    
     // var colors = ['#AC1212', '#F37310', '#EBC621', '#9EC430', '#4E9A26'];
     var colors = ['#4E9A26', '#9EC430', '#EBC621', '#F37310', '#AC1212'];
     // var icons = ['red', 'orange', 'yellow', 'yellowgreen', 'green'];
