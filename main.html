@@ -14,7 +14,7 @@
 
 			body {
 				padding: 10px;
-				background-color: #EEEEEE;
+				background-color: #555555;
 			}
 
 			h3 {
@@ -80,6 +80,63 @@
 				min-width: 1.5em;
 				text-align: center;
 			}
+
+			form {
+				margin-top: 10px;
+			}
+
+			form div {
+				position: relative;
+				min-height: 1.2em;
+			}
+
+			form input[type="range"] {
+				width: 100%;
+			}
+
+			form div span:nth-of-type(1) {
+				left: 0px;
+				position: absolute;
+			}
+
+			form div span:nth-of-type(2) {
+				right: 0px;
+				position: absolute;
+			}
+
+			form button {
+				-webkit-appearance: none;
+				border: none;
+				background-color: white;
+				border-radius: 3px;
+				color: black;
+				font-size: 1.1em;
+
+				margin: 0 auto;
+    			display: table;
+			}
+
+			iframe {
+				visibility: hidden;
+				width: 0px;
+				height: 0px;
+			}
+
+			.alert {
+				text-align: center;
+				display: block;
+				margin-top: 5px;
+			}
+
+			/*input[type=range]::-webkit-slider-runnable-track {
+			  background: white;
+			  height: 4px;
+			}
+
+			input[type=range]:focus::-webkit-slider-runnable-track {
+			  background: white;
+			  height: 4px;
+			}*/
 		</style>
 	</head>
 	<body>
@@ -105,5 +162,23 @@
 			<span class="bar"><span></span></span>
 			<span class="score">3</span>
 		</div>
+		<iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
+		<form action="https://alexbeals.com/test.php" method="POST" target="dummyframe">
+			<input name="vote" type="range" min="1" max="5" step="1" list="steplist" />
+			<input id="url" name="url" type="hidden" value="" />
+			<datalist id="steplist">
+			    <option>1</option>
+			    <option>2</option>
+			    <option>3</option>
+			    <option>4</option>
+			    <option>5</option>
+			</datalist>
+			<div class="records">
+				<span>Good</span>
+				<span>Bad</span>
+			</div>
+			<button type="submit">Vote</button>
+		</form>
+		<span class="alert"></span>
 	</body>
 </html>

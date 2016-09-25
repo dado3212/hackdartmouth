@@ -36,7 +36,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     str = str.replace(/<(?:.|\n)*?>/gm, ' ');
     str = str.replace(/\n/gm, ' ');
     
-    xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     // xhr.open("POST", "http://surfshield-env.us-east-1.elasticbeanstalk.com/api/v0.1/rating", true);
     xhr.open("POST", "https://alexbeals.com/test.php", true);
     xhr.setRequestHeader("Content-type", "application/json");

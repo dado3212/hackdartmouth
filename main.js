@@ -39,9 +39,16 @@ function update(data) {
 
 function onWindowLoad() {
   chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+    document.querySelector('form #url').value = tabs[0].url;
     chrome.tabs.sendMessage(tabs[0].id, {action: "getData"}, function(response) {
       update(response);
     });
+  });
+
+  document.querySelector('form button[type="submit"]').addEventListener("click", function() {
+    document.querySelector('span.alert').innerText = 'Successfully voted!';
+    document.querySelector('form').style.display = 'none';
+    // document.querySelector('input[type="range"]').outerHTML = '<input name="vote" type="range" min="1" max="5" step="1" list="steplist" />';
   });
 }
 
