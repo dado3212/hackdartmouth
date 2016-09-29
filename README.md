@@ -1,4 +1,4 @@
-# <img src="/icons/Main.png?raw=true" height="50" alt="Icon"/> SurfShield
+# <img src="/icons/Main.png?raw=true" height="40" alt="Icon"/> SurfShield
 Created by Alex Beals, Andrew Ogren, Matt Girouard, Jon Kramer for HackDartmouth III
 
 ### Inspiration
