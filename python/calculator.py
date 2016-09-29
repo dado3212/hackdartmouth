@@ -1,34 +1,29 @@
 import json
 from watson_developer_cloud import ToneAnalyzerV3
 import requests
+from secret import tone_analyzer_username, tone_analyzer_password, bark_token
 requests.packages.urllib3.disable_warnings()
 
-
 tone_analyzer = ToneAnalyzerV3(
-   username="a0d6b309-06ae-4b3c-bb2e-2f32888b5365",
-   password="yhlmAAsWiUKU",
+   username=tone_analyzer_username,
+   password=tone_analyzer_password,
    version='2016-05-19')
 
-
 def makeWatsonCall( str ):
-	
 	return(json.dumps(tone_analyzer.tone(text=str), indent=2))
-
 
 def processJSON( str ):
 	parsed_json = json.loads(makeWatsonCall(str))
 	anger = (parsed_json['document_tone']['tone_categories'][0]['tones'][0]['score'])
 	return anger
 
-
 def makeBarkCall ( text ):
-	url = 'https://partner.bark.us/api/v1/messages?token=kUSvsx47Lg56kUfCfZDvQNKa'
+	url = 'https://partner.bark.us/api/v1/messages?token=' + bark_token
 	data = {'message': text}
 	headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
 	r = requests.post(url, data=json.dumps(data), headers=headers)
 
 	return (r.text)
-
 
 def process( text ):
 	parsed_json = json.loads(makeBarkCall(text))
@@ -48,7 +43,6 @@ def process( text ):
 	else:
 		cyberScore = 5
 
-
 	# profanity score (1 to 5)
 	profaneSeverity = parsed_json['results']['profanity']['severity'] + 1
 	bullyingArr = [cyberScore,profaneSeverity]
@@ -66,10 +60,8 @@ def calculateScore(audienceScore, angerScore, cyberScore):
 		averageScore = round((cyberBullying+profanity+angerScore)/3,1)
 	else:
 		averageScore = round((cyberBullying+profanity+angerScore+audienceScore)/4,1)
-
 	return averageScore
 	
-
 #Testing 
 #Strang = "What a lovely day. I love you"
 #angerScore = processJSON(Strang)
@@ -77,10 +69,3 @@ def calculateScore(audienceScore, angerScore, cyberScore):
 #audienceScore = 3
 #overall = calculateScore(audienceScore,angerScore,cyberScore)
 #print(overall)
-
-
-
-
-
-
-
