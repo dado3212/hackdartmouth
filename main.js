@@ -1,3 +1,6 @@
+// The script in main.html that loads in the data
+
+// Sets all the text in the HTML file based on the data object passed to the window
 function update(data) {
   // var colors = ['#AC1212', '#F37310', '#EBC621', '#9EC430', '#4E9A26'];
   var colors = ['#4E9A26', '#9EC430', '#EBC621', '#F37310', '#AC1212'];
@@ -37,14 +40,18 @@ function update(data) {
   });
 }
 
+// Run when the window is opened after clicking on the extension in the toolbar
 function onWindowLoad() {
+  // Figure out which is the current tab
   chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
     document.querySelector('form #url').value = tabs[0].url;
+    // Ask that tab for the current information for that tab
     chrome.tabs.sendMessage(tabs[0].id, {action: "getData"}, function(response) {
       update(response);
     });
   });
 
+  // Handle voting
   document.querySelector('form button[type="submit"]').addEventListener("click", function() {
     document.querySelector('span.alert').innerText = 'Successfully voted!';
     document.querySelector('form').style.display = 'none';
